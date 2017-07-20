@@ -1,21 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
+import BucketListScreen from './screens/BucketListScreen';
+import CameraScreen from './screens/CameraScreen';
+import HomeScreen from './screens/HomeScreen';
+import LoginScreen from './screens/LoginScreen';
+import NotificationsScreen from './screens/NotificationsScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import SignupScreen from './screens/SignupScreen';
+
+const Nav = TabNavigator({
+  login: { screen: LoginScreen },
+  signup: { screen: SignupScreen },
+  main: {
+    screen: TabNavigator({
+      home: { screen: HomeScreen },
+      bucketlist: { screen: BucketListScreen },
+      camera: { screen: CameraScreen },
+      notifications: { screen: NotificationsScreen},
+      profile: { screen: ProfileScreen }
+    })
+  }
+});
+
+export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
+    return <Nav />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
