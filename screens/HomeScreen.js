@@ -7,7 +7,9 @@ export default class HomeScreeen extends Component {
   
   render() {
     return (
-      <ImageCarouselList />
+      <View>
+        <ImageCarouselList />
+      </View>
     );
   }
 }
