@@ -51,9 +51,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#C3C4C4',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.06,
-    elevation: .4,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.04,
+    elevation: .04,
+    width: width,
   }, 
   imageStyle: {
     width: width, 
