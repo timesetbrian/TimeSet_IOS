@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TabNavigator } from 'react-navigation';
+import { Card, Button } from 'react-native-elements';
+
 import Deck from '../components/Deck';
 
 const DATA = [
@@ -17,7 +19,20 @@ const DATA = [
 export default class HomeScreeen extends Component {  
   renderCard = (item) => {
     return (
-      <Text key={item.id}>{item.text}</Text>
+      <Card
+        key={item.id}
+        title={item.text}
+        image={{uri: item.uri}}
+      >
+        <Text style={{marginBottom: 10}}>
+          Custom Text
+        </Text>
+        <Button
+          icon={{ name: 'code'}}
+          backgroundColor="#03A9F4"
+          title="View Now"
+        />
+      </Card>
     )
   }
 
