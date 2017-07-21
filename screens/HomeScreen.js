@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TabNavigator } from 'react-navigation';
+import ImageCarousel from '../components/ImageCarousel';
 
 export default class HomeScreeen extends Component {
   
   render() {
     return (
-      <View style={styles.container}>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-      </View>
+      <ImageCarousel />
     );
   }
 }
