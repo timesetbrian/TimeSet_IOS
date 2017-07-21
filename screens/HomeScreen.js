@@ -21,29 +21,22 @@ export default class HomeScreeen extends Component {
     return (
       <Card
         key={item.id}
-        title={item.text}
         image={{uri: item.uri}}
       >
         <Text style={{marginBottom: 10}}>
-          Custom Text
+          {item.text}
         </Text>
-        <Button
-          icon={{ name: 'code'}}
-          backgroundColor="#03A9F4"
-          title="View Now"
-        />
+        
       </Card>
     )
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <Deck 
-          renderCard={this.renderCard.bind(this)} 
-          data={DATA}
-        />
-      </View>
+      <Deck 
+        renderCard={this.renderCard.bind(this)} 
+        data={DATA}
+      />
     );
   }
 }

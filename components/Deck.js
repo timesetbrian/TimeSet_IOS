@@ -10,7 +10,7 @@ export default class Deck extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         {this.renderCards()}
       </View>
     )
