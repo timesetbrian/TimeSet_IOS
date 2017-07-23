@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import ImageCarouselList from '../components/ImageCarouselList';
+import PastScreen from './PastScreen';
+import { Button } from 'react-native-elements';
+
+const HomeTopNav = TabNavigator({
+  Past: {
+    screen: PastScreen,
+  }
+},
+{
+  tabBarPosition: 'top',
+});
+
 
 export default class HomeScreeen extends Component {
-  
   render() {
-    return (
-      <View>
-        <ImageCarouselList />
-      </View>
-    );
+    return <HomeTopNav />
   }
 }
 

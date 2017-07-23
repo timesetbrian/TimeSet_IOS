@@ -5,16 +5,14 @@ import Carousel from 'react-native-snap-carousel';
 var {height, width} = Dimensions.get('window')
 
 const Images = [
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/17/13/03/55/6bfc0bcd-76d6-4f46-a644-5c041e1db59c/file.jpg", id: 1 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/18/15/09/06/953d20fd-537f-41c5-a5a5-9562871f2619/file.jpg", id: 2 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/17/13/03/07/8b37eae3-4b58-4b83-a2de-0c8e6477dd15/file.jpg", id: 3 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/17/13/03/55/6bfc0bcd-76d6-4f46-a644-5c041e1db59c/file.jpg", id: 1 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/18/15/09/06/953d20fd-537f-41c5-a5a5-9562871f2619/file.jpg", id: 2 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/17/13/03/07/8b37eae3-4b58-4b83-a2de-0c8e6477dd15/file.jpg", id: 3 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/17/13/03/55/6bfc0bcd-76d6-4f46-a644-5c041e1db59c/file.jpg", id: 1 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/18/15/09/06/953d20fd-537f-41c5-a5a5-9562871f2619/file.jpg", id: 2 },
-  { uri: "https://d3ecxtcn6f07wu.cloudfront.net/2017/07/17/13/03/07/8b37eae3-4b58-4b83-a2de-0c8e6477dd15/file.jpg", id: 3 },
-
+  { id: 1, text: 'Card #1', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg' },
+  { id: 2, text: 'Card #2', uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg' },
+  { id: 3, text: 'Card #3', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
+  { id: 4, text: 'Card #4', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
+  { id: 5, text: 'Card #5', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg' },
+  { id: 6, text: 'Card #6', uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg' },
+  { id: 7, text: 'Card #7', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg' },
+  { id: 8, text: 'Card #8', uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg' },
 ]
 export default class ImageCarousel extends Component {
   
@@ -27,13 +25,18 @@ export default class ImageCarousel extends Component {
           {Images.map((image)=>{
             return(
               <View style={styles.imageContainer} key={image.id}>
+                <View style={styles.textContainer}>
+                  <Text style={{fontSize: 12}}>
+                    {image.text}
+                  </Text>
+                </View>
                 <Image 
                   source={{uri: image.uri }} 
                   style={styles.imageStyle}                 
                 />
                 <View style={styles.textContainer}>
                   <Text style={{fontSize: 12}}>
-                    {image.id}
+                    {image.text}
                   </Text>
                 </View>
               </View>
@@ -47,14 +50,16 @@ export default class ImageCarousel extends Component {
 
 const styles = StyleSheet.create({
   imageContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
+    borderWidth: .5,
     borderColor: '#C3C4C4',
-    shadowOffset: { width: 0, height: 6 },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.04,
     elevation: .04,
     width: width,
+    marginBottom: 6
   }, 
   imageStyle: {
     width: width, 
@@ -62,7 +67,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     width: width, 
-    height: 100, 
+    height: 75, 
     alignItems: 'center',
     justifyContent: 'center'
 

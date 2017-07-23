@@ -39,12 +39,12 @@ export default class LoginForm extends Component {
       })
     })
     .then(response => console.log(response))
-    .catch(err => console.error(err));
-    // .then(this.onLoginSuccess)
-    // .catch((err) => {
-    //   console.log(err);
-    //   this.setState({ error: 'Invalid username or password', loading: false });
-    // });
+    .catch(err => console.error(err))
+    .then(this.onLoginSuccess)
+    .catch((err) => {
+      console.log(err);
+      this.setState({ error: 'Invalid username or password', loading: false });
+    });
   }
 
   onLoginSuccess() {

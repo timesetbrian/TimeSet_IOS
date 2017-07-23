@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListView } from 'react-native';
-import ListItem from './ListItem';
+import ImageCarousel from './ImageCarousel';
 
 
 const data = [1, 2, 3]
@@ -16,7 +16,7 @@ export default class ImageCarouselList extends Component {
   }
 
   renderRow() {
-    return <ListItem />
+    return <ImageCarousel />
   }
 
   render () { 
