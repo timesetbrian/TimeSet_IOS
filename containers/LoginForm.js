@@ -5,10 +5,13 @@ import {
   TextInput,
   TouchableOpacity,
   Text } from 'react-native';
+import axios from 'axios';
 
 import SignupButton from '../components/common/SignupButton';
 import PasswordInput from '../components/common/PasswordInput';
 import Spinner from '../components/common/Spinner';
+
+const ROOT_URL = 'http://timeset-gateway-test.us-east-1.elasticbeanstalk.com/api/v1/auth/sign_in';
 
 export default class LoginForm extends Component {
   constructor(props) {
@@ -17,7 +20,7 @@ export default class LoginForm extends Component {
       email: '',
       password: '',
       error: '',
-      loading: false
+      loading: false,
     };
     this.onSigninPress = this.onSigninPress.bind(this);
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
@@ -26,25 +29,22 @@ export default class LoginForm extends Component {
   onSigninPress() {
     const { email, password } = this.state;
 
-    this.setState({ loading: true });
+    this.setState({error: '', loading: true})
 
-    fetch('http://timeset-gateway-test.us-east-1.elasticbeanstalk.com/api/v1/auth/sign_in', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
+    axios.post(`${ROOT_URL}`, {
+      email: email,
+      password: password
     })
-    .then(response => console.log(response))
-    .catch(err => console.error(err))
-    .then(this.onLoginSuccess)
-    .catch((err) => {
-      console.log(err);
-      this.setState({ error: 'Invalid username or password', loading: false });
-    });
+      .then(response => {
+        console.log(response)
+      })
+      .then(() => {
+        this.onLoginSuccess();
+      })
+      .catch(err => {
+        console.log(err)
+        this.setState({error: 'Invalid username or password', loading: false})
+      })
   }
 
   onLoginSuccess() {
@@ -56,11 +56,12 @@ export default class LoginForm extends Component {
     this.props.handleSignin();
   }
 
+  // Conditional that renders loading spinner or signup button
   renderSpinner() {
     if (this.state.loading) {
       return <Spinner size="small" />;
     }
-    return <SignupButton onPress={this.props.handleSignin} text='SIGN IN' />;
+    return <SignupButton onPress={this.onSigninPress} text='SIGN IN' />;
   }
 
   render() {
@@ -68,11 +69,11 @@ export default class LoginForm extends Component {
       <View style={styles.container}>  
         <View style={styles.emailContainer}>
           <TextInput
+            onChangeText={email => this.setState({ email })}
             style={styles.email}
             value={this.state.email}
             placeholder='Email'
             autoCorrect={false}
-            onChangeText={email => this.setState({ email })}
           />
         </View>
         <PasswordInput 

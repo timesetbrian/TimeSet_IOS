@@ -24,6 +24,15 @@ const HomeTopNav = TabNavigator({
 
 
 export default class HomeScreeen extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'Home',
+    tabBarIcon: ({ tintColor }) => (
+      <Image
+        source={require('../assets/icons/tinified/home_white.png')}
+        style={styles.icon}
+      />
+    ),
+  };
   render() {
     return <HomeTopNav />
   }
@@ -35,5 +44,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  icon: {
+    width: 30,
+    height: 30,
   }
 });

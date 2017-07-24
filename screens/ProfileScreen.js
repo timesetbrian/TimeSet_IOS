@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 export default class ProfileScreen extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'Profile',
+    tabBarIcon: ({ tintColor }) => (
+      <Image
+        source={require('../assets/icons/tinified/profile_white.png')}
+        style={styles.icon}
+      />
+    ),
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -20,5 +30,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  icon: {
+    width: 30,
+    height: 30,
   }
 });
