@@ -10,7 +10,7 @@ export default class SignupScreen extends Component {
     this.handleSignup = this.handleSignup.bind(this);
   }
 
-  handleSignup(response) {
+  handleSignup() {
     this.props.navigation.navigate('main');
   }
 
