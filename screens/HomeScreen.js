@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import PastScreen from './PastScreen';
 import { Button } from 'react-native-elements';
+
+import PastScreen from './PastScreen';
+import FutureScreen from './FutureScreen';
+import MapScreen from './MapScreen';
 
 const HomeTopNav = TabNavigator({
   Past: {
     screen: PastScreen,
+  },
+  Future: {
+    screen: FutureScreen
+  },
+  Map: {
+    screen: MapScreen
   }
 },
 {
