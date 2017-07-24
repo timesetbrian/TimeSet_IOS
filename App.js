@@ -14,7 +14,7 @@ const Nav = TabNavigator({
   signup: { screen: SignupScreen },
   main: {
     screen: TabNavigator({
-      home: { screen: HomeScreen },
+      home: { screen: HomeScreen,  },
       bucketlist: { screen: BucketListScreen },
       camera: { screen: CameraScreen },
       notifications: { screen: NotificationsScreen},

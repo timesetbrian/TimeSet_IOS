@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { TabNavigator } from 'react-navigation';
+import { Button } from 'react-native-elements';
+
+import PastScreen from './PastScreen';
+import FutureScreen from './FutureScreen';
+import MapScreen from './MapScreen';
+
+const HomeTopNav = TabNavigator({
+  Past: {
+    screen: PastScreen,
+  },
+  Future: {
+    screen: FutureScreen
+  },
+  Map: {
+    screen: MapScreen
+  }
+},
+{
+  tabBarPosition: 'top',
+});
+
 
 export default class HomeScreeen extends Component {
-  
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-        <Text>HomeScreeen</Text>
-      </View>
-    );
+    return <HomeTopNav />
   }
 }
 
