@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
 export default class BuckeListScreen extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'BucketList',
+    tabBarIcon: ({ tintColor }) => (
+      <Image
+        source={require('../assets/icons/tinified/bucketlist_white.png')}
+        style={styles.icon}
+      />
+    ),
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -20,5 +29,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  }, 
+  icon: {
+    width: 30,
+    height: 30,
   }
 });

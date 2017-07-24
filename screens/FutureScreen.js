@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default class NotificationsScreen extends Component {
+export default class FutureScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>NotificationsScreen</Text>
-        <Text>NotificationsScreen</Text>
-        <Text>NotificationsScreen</Text>
-        <Text>NotificationsScreen</Text>
+        <Text>FutureScreen</Text>
+        <Text>FutureScreen</Text>
+        <Text>FutureScreen</Text>
+        <Text>FutureScreen</Text>
       </View>
     );
   }

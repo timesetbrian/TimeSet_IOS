@@ -53,13 +53,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: .5,
+    borderWidth: 1,
     borderColor: '#C3C4C4',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.04,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
     elevation: .04,
     width: width,
-    marginBottom: 6
+    marginBottom: 20
   }, 
   imageStyle: {
     width: width, 
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     width: width, 
-    height: 75, 
+    height: 80, 
     alignItems: 'center',
     justifyContent: 'center'
 

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, Text } from 'react-native';
+import axios from 'axios';
 
 import SignupInput from '../components/SignupInput';
 import SignupTerms from '../components/SignupTerms';
 import SignupButton from '../components/common/SignupButton';
 import PasswordInput from '../components/common/PasswordInput';
 import Spinner from '../components/common/Spinner';
+
+const ROOT_URL = 'http://timeset-gateway-test.us-east-1.elasticbeanstalk.com/api/v1/auth';
 
 export default class SignupForm extends Component {
   constructor(props) {
@@ -17,34 +20,35 @@ export default class SignupForm extends Component {
       email: '',
       phone: '',
       password: '',
-      loading: false
+      loading: false,
+      error: ''
     };
     this.onSignupPress = this.onSignupPress.bind(this);
+    this.onSignupSuccess = this.onSignupSuccess.bind(this);
   }
   
   onSignupPress() {
     const { firstName, lastName, username, email, phone, password } = this.state;
 
-    fetch('http://timeset-gateway-test.us-east-1.elasticbeanstalk.com/api/v1/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        username,
-        password,
-        email,
-        phone
-      })
-    })
-    .then(response => console.log(response))
-    .then(this.props.handleSignup)
-    .catch(err => console.log(err));
+    this.setState({error: '', loading: true})
 
-    // fetch('https://httpbin.org/get')
-    // .then(response => console.log(response));
+    axios.post(`${ROOT_URL}`, {
+      username: username,
+      email: email,
+      password: password
+    })
+      .then(response => console.log(response))
+      .then(() => {
+        this.onSignupSuccess()
+      })
+      .catch(err => {
+        console.log(err)
+        this.setState({error: 'Error', loading: false})
+      })
+  }
+
+  onSignupSuccess () {
+    this.props.handleSignup();
   }
 
   renderSpinner() {
@@ -61,43 +65,46 @@ export default class SignupForm extends Component {
           <View style={styles.firstNameContainer}>
             <TextInput
               style={styles.firstName}
+              value={this.state.firstName}
               onChangeText={firstName => this.setState({ firstName })}
               placeholder='First Name'
-              value={this.state.firstName}
             />
           </View>
           <View style={styles.lastNameContainer}>
             <TextInput
               style={styles.lastName}
+              value={this.state.lastName}
               onChangeText={lastName => this.setState({ lastName })}
               placeholder='Last Name'
-              value={this.state.lastName}
             />
           </View>
         </View>
 
         <SignupInput 
-          placeholder='Username'
-          autoCorrect={false}
           value={this.state.username}
           onChangeText={username => this.setState({ username })}
+          placeholder='Username'
+          autoCorrect={false}
         />
         <SignupInput 
-          placeholder='Email Address'
+          onChangeText={email => this.setState({ email })}
           autoCorrect={false}
           value={this.state.email}
-          onChangeText={email => this.setState({ email })}
+          placeholder='Email Address'
         />
         <SignupInput 
-          placeholder='Phone Number'
-          value={this.state.phone}
           onChangeText={phone => this.setState({ phone })}
+          value={this.state.phone}
+          placeholder='Phone Number'
         />
 
         <PasswordInput 
-          value={this.state.password}
           onChangeText={password => this.setState({ password })}
+          value={this.state.password}
         />
+        <View style={{ alignItems: 'center' }}>
+          <Text style={{ color: 'red' }} >{this.state.error}</Text>
+        </View>
 
         <SignupTerms />
 
