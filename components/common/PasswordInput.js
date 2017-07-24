@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   text: {
     height: 50,
-    fontSize: 14,
+    fontSize: 16,
   }
 });
 

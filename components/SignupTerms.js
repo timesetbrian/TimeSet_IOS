@@ -10,9 +10,9 @@ export default class SignupTerms extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.fontSize}>By tapping "Sign Up" you agree</Text>
+        <Text style={styles.text}>By tapping "Sign Up" you agree</Text>
         <View style={styles.direction}>
-          <Text style={styles.fontSize}>to the </Text>
+          <Text style={styles.text}>to the </Text>
           <TouchableOpacity >
             <View style={styles.termsContainer}>
               <Text style={styles.termsText}>terms & conditions</Text>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    fontSize: 14
+    fontSize: 16
   },
   direction: {
     flexDirection: 'row'
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
   },
   termsText: {
     color: '#90BC46', 
-    fontSize: 14
-  }
+    fontSize: 16
+  },
 });

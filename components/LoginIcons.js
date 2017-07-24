@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   icons: {
-    marginRight: 93,
-    height: 40, 
-    width: 40,
+    marginRight: 75,
+    height: 50, 
+    width: 50,
   },
   lastIcon: {
-    height: 40, 
-    width: 40
+    height: 50, 
+    width: 50
   }
 });

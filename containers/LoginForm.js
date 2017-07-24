@@ -24,6 +24,7 @@ export default class LoginForm extends Component {
     };
     this.onSigninPress = this.onSigninPress.bind(this);
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
+    this.onLoginFail = this.onLoginFail.bind(this);
   }
 
   onSigninPress() {
@@ -38,13 +39,8 @@ export default class LoginForm extends Component {
       .then(response => {
         console.log(response)
       })
-      .then(() => {
-        this.onLoginSuccess();
-      })
-      .catch(err => {
-        console.log(err)
-        this.setState({error: 'Invalid username or password', loading: false})
-      })
+      .then(() => this.onLoginSuccess())
+      .catch(err => this.onLoginFail(err))
   }
 
   onLoginSuccess() {
@@ -56,7 +52,11 @@ export default class LoginForm extends Component {
     this.props.handleSignin();
   }
 
-  // Conditional that renders loading spinner or signup button
+  onLoginFail(err) {
+    this.setState({error: 'Invalid username or password', loading: false})
+    console.log('error', err)
+  }
+
   renderSpinner() {
     if (this.state.loading) {
       return <Spinner size="small" />;
@@ -106,14 +106,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   email: {
-    fontSize: 14,
+    fontSize: 16,
     height: 50,
   },
   forgotPwContainer: {
     alignItems: 'flex-end'
   },
   forgotPwText: {
-    fontSize: 14, 
+    fontSize: 16, 
     marginTop: 10
   }
 });
