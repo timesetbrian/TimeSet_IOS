@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     width: width, 
-    height: 80, 
+    height: 85, 
     alignItems: 'center',
     justifyContent: 'center'
 

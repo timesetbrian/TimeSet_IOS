@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   name: {
-    fontSize: 22, 
+    fontSize: 26, 
     justifyContent: 'center',
     letterSpacing: 3
   }

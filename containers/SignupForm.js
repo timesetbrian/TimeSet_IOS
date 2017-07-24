@@ -25,6 +25,7 @@ export default class SignupForm extends Component {
     };
     this.onSignupPress = this.onSignupPress.bind(this);
     this.onSignupSuccess = this.onSignupSuccess.bind(this);
+    this.onSignupFail = this.onSignupFail.bind(this);
   }
   
   onSignupPress() {
@@ -38,17 +39,16 @@ export default class SignupForm extends Component {
       password: password
     })
       .then(response => console.log(response))
-      .then(() => {
-        this.onSignupSuccess()
-      })
-      .catch(err => {
-        console.log(err)
-        this.setState({error: 'Error', loading: false})
-      })
+      .then(() => this.onSignupSuccess())
+      .catch(() => this.onSignupFail())
   }
 
   onSignupSuccess () {
     this.props.handleSignup();
+  }
+
+  onSignupFail() {
+    this.setState({error: 'Error', loading: false})
   }
 
   renderSpinner() {
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     borderColor: '#C3C4C4'
   },
   firstName: {
-    fontSize: 14,
+    fontSize: 16,
     height: 50, 
   },
   lastNameContainer: {
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     borderRightWidth: 1
   },
   lastName: {
-    fontSize: 14,
+    fontSize: 16,
     height: 50,
   }
 });
