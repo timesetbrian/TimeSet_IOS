@@ -31,7 +31,7 @@ export default class SignupForm extends Component {
   onSignupPress() {
     const { firstName, lastName, username, email, phone, password } = this.state;
 
-    this.setState({error: '', loading: true})
+    this.setState({ error: '', loading: true });
 
     axios.post(`${ROOT_URL}`, {
       username: username,
@@ -40,15 +40,15 @@ export default class SignupForm extends Component {
     })
       .then(response => console.log(response))
       .then(() => this.onSignupSuccess())
-      .catch(() => this.onSignupFail())
+      .catch(() => this.onSignupFail());
   }
 
-  onSignupSuccess () {
+  onSignupSuccess() {
     this.props.handleSignup();
   }
 
   onSignupFail() {
-    this.setState({error: 'Error', loading: false})
+    this.setState({ error: 'Error', loading: false });
   }
 
   renderSpinner() {

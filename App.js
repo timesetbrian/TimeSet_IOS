@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import { TabNavigator, StackNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
+// Redux
+import reducers from './reducers/index';
+
+// Screens
 import BucketListScreen from './screens/BucketListScreen';
 import CameraScreen from './screens/CameraScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -14,17 +20,24 @@ const Nav = TabNavigator({
   signup: { screen: SignupScreen },
   main: {
     screen: TabNavigator({
-      home: { screen: HomeScreen,  },
+      home: { screen: HomeScreen },
       bucketlist: { screen: BucketListScreen },
       camera: { screen: CameraScreen },
-      notifications: { screen: NotificationsScreen},
+      notifications: { screen: NotificationsScreen },
       profile: { screen: ProfileScreen }
     })
   }
 });
 
+const store = createStore(reducers);
+
 export default class App extends Component {
   render() {
-    return <Nav />;
+    return (
+      <Provider store={store}>
+        <Nav />
+      </Provider>
+    
+    );
   }
 }

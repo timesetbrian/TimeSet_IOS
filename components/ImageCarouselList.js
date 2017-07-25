@@ -3,29 +3,29 @@ import { ListView } from 'react-native';
 import ImageCarousel from './ImageCarousel';
 
 
-const data = [1, 2, 3]
+const data = [1, 2, 3];
 
 export default class ImageCarouselList extends Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
     const ds = new ListView.DataSource({
-      rowHasChanged:(r1, r2) => r1 !== r2
+      rowHasChanged: (r1, r2) => r1 !== r2
     });
 
-    this.dataSource = ds.cloneWithRows(data)
+    this.dataSource = ds.cloneWithRows(data);
   }
 
   renderRow() {
-    return <ImageCarousel />
+    return <ImageCarousel />;
   }
 
-  render () { 
+  render() { 
     return (
       <ListView 
         removeClippedSubviews={false}
         dataSource={this.dataSource}
         renderRow={this.renderRow}
       />
-    )
+    );
   }
 }

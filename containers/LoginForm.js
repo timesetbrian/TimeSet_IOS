@@ -30,17 +30,17 @@ export default class LoginForm extends Component {
   onSigninPress() {
     const { email, password } = this.state;
 
-    this.setState({error: '', loading: true})
+    this.setState({ error: '', loading: true });
 
     axios.post(`${ROOT_URL}`, {
       email: email,
       password: password
     })
       .then(response => {
-        console.log(response)
+        console.log(response);
       })
       .then(() => this.onLoginSuccess())
-      .catch(err => this.onLoginFail(err))
+      .catch(err => this.onLoginFail(err));
   }
 
   onLoginSuccess() {
@@ -53,8 +53,8 @@ export default class LoginForm extends Component {
   }
 
   onLoginFail(err) {
-    this.setState({error: 'Invalid username or password', loading: false})
-    console.log('error', err)
+    this.setState({ error: 'Invalid username or password', loading: false });
+    console.log('error', err);
   }
 
   renderSpinner() {
